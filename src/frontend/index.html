@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: 'Inter', sans-serif;
+    }
+
+    .content {
+        max-width: 500px;
+    }
+</style>
+
+<body>
+    <div class="content">
+        <h1>Mahaprasad Dehury</h1>
+
+        <p>I like computers and tinkering with them. I can do some programming. I like
+            building my own fun projects. Btw, I use Fedora.</p>
+
+        <table>
+            <tr>
+                <td>Languages: </td>
+                <td>Golang, Javascript, Python, Bash, HCL, YAML, HTML, CSS</td>
+            </tr>
+            <tr>
+                <td>Framework: </td>
+                <td>Gin, Bootstrap, AWS SDK</td>
+            </tr>
+            <tr>
+                <td>Databases: </td>
+                <td>RDS, DynamoDB, MongoDB</td>
+            </tr>
+            <tr>
+                <td>Tools: </td>
+                <td>AWS Cloud, Docker, Git, Github Actions, Terraform, Linux (RPM Based Distributions)</td>
+            </tr>
+        </table>
+
+        <br>
+
+        <a href="https://www.github.com/thisisheymde">Github</a>
+        <a href="https://www.linkedin.com/in/thisisheymde/">LinkedIn</a>
+        <a href="https://twitter.com/thisisheymde">Twitter</a>
+        <a href="https://hachyderm.io/@heymde">Mastodon</a>
+        <a href="https://heymde.bearblog.dev/">BearBlog</a>
+
+        <p id="views"></p>
+    </div>
+</body>
+
+<script>
+    const text = "Views: "
+
+    window.addEventListener('load', async () => {
+        const response = await fetch("https://resumeapi.heymde.site/crc")
+        resp = await response.json()
+
+        if (response.status != 200) {
+            console.log("Error in Backend.")
+            return
+        }
+
+        document.querySelector("#views").innerText = text + resp
+    })
+</script>
+
+</html>
